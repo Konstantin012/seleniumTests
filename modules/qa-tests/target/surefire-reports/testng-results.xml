@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="4" total="6" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2019-09-08T14:18:13 EEST" name="selenium" finished-at="2019-09-08T14:19:21 EEST" duration-ms="68113">
+    <groups>
+    </groups>
+    <test started-at="2019-09-08T14:18:13 EEST" name="ChromeTest" finished-at="2019-09-08T14:18:40 EEST" duration-ms="26544">
+      <class name="com.telesens.automationpractice.AuthTests">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.telesens.automationpractice.AuthTests@78a2da20]" started-at="2019-09-08T14:18:13 EEST" name="setUp" finished-at="2019-09-08T14:18:19 EEST" duration-ms="5847" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testAuthSuccess(java.lang.String, java.lang.String)[pri:0, instance:com.telesens.automationpractice.AuthTests@78a2da20]" started-at="2019-09-08T14:18:19 EEST" name="testAuthSuccess" data-provider="testAuthSuccessProvider" finished-at="2019-09-08T14:18:39 EEST" duration-ms="19969" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[kkon870@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[125test]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAuthSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.telesens.automationpractice.AuthTests@78a2da20]" started-at="2019-09-08T14:18:39 EEST" name="tearDown" finished-at="2019-09-08T14:18:40 EEST" duration-ms="670" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.telesens.automationpractice.AuthTests -->
+    </test> <!-- ChromeTest -->
+    <test started-at="2019-09-08T14:18:40 EEST" name="FirefoxTest" finished-at="2019-09-08T14:19:21 EEST" duration-ms="41477">
+      <class name="com.telesens.automationpractice.AuthTests">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:com.telesens.automationpractice.AuthTests@3b2c72c2]" started-at="2019-09-08T14:18:40 EEST" name="setUp" finished-at="2019-09-08T14:19:02 EEST" duration-ms="22379" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testAuthSuccess(java.lang.String, java.lang.String)[pri:0, instance:com.telesens.automationpractice.AuthTests@3b2c72c2]" started-at="2019-09-08T14:19:02 EEST" name="testAuthSuccess" data-provider="testAuthSuccessProvider" finished-at="2019-09-08T14:19:13 EEST" duration-ms="10564" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[kkon870@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[125test]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAuthSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.telesens.automationpractice.AuthTests@3b2c72c2]" started-at="2019-09-08T14:19:13 EEST" name="tearDown" finished-at="2019-09-08T14:19:21 EEST" duration-ms="8531" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.telesens.automationpractice.AuthTests -->
+    </test> <!-- FirefoxTest -->
+  </suite> <!-- selenium -->
+</testng-results>
