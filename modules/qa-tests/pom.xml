@@ -46,7 +46,7 @@
                     </systemProperties>
 
                     <suiteXmlFiles>
-                        <suiteXmlFile>../../suites/testng2.xml</suiteXmlFile>
+                        <suiteXmlFile>../../suites/testng.xml</suiteXmlFile>
                         <!--                        <suiteXmlFile>${suite}</suiteXmlFile>-->
                     </suiteXmlFiles>
                 </configuration>
