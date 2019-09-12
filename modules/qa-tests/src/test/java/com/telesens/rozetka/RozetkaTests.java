@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class RozetkaTests {
 
-    private  String baseUrl;
+    private String baseUrl;
     private WebDriver driver;
     private Properties prop;
     private String mainMenuCSS = "body > app-root > div > div:nth-child(2) > app-rz-main-page > div > aside > main-page-sidebar > sidebar-fat-menu > div > ul > li:nth-child(1) > a";
@@ -36,7 +37,6 @@ public class RozetkaTests {
     }
 
 
-
     @Test
     @Ignore
     public void testSort() {
@@ -49,7 +49,7 @@ public class RozetkaTests {
         List<String> prices =
                 driver.findElements(By.cssSelector(priceCSS)).stream()
                         .map(WebElement::getText)
-                        .map(s->s.replaceAll("[^\\d]", ""))
+                        .map(s -> s.replaceAll("[^\\d]", ""))
                         .collect(Collectors.toList());
         System.out.println(prices);
 
@@ -64,7 +64,7 @@ public class RozetkaTests {
         List<Integer> pricesSortedActual =
                 driver.findElements(By.cssSelector(priceCSS)).stream()
                         .map(WebElement::getText)
-                        .map(s->s.replaceAll("[^\\d]", ""))
+                        .map(s -> s.replaceAll("[^\\d]", ""))
                         .map(Integer::parseInt)
                         .collect(Collectors.toList());
 
@@ -81,14 +81,32 @@ public class RozetkaTests {
     }
 
     @Test
-    public void testSort2()
-    {
+    public void testSort2() {
         driver.get(baseUrl);
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(By.cssSelector(mainMenuCSS)))
                 .perform();
         driver.findElement(By.partialLinkText("Мониторы")).click();
 
+
+
+//        WebElement pol = driver.findElement(By.cssSelector("#trackbarprice > table > tbody > tr > td.lb > div > img"));
+//        boolean flag = true;
+//        int j=1;
+//        while (flag) {
+//            WebElement element0 = driver.findElement(By.cssSelector("#trackbarprice > table > tbody > tr > td"));
+//            int style = Integer.parseInt(element0.getAttribute("style").replaceAll("[^\\d]", ""));
+//                if (style>=54){
+//                    WebElement element = driver.findElement(By.cssSelector("#trackbarprice > table > tbody > tr > td[style='width: 54px;']"));
+//                    flag =false;
+//                }
+//                else {
+//                    new Actions(driver).clickAndHold(pol).moveByOffset(j,0).build().perform();     //В КОНЦЕ ПЕРЕПРІГИВАЕТС 49 НА 52!!
+//                    j++;
+//                }
+//        }
+
+//
         driver.findElement(By.cssSelector("#price\\[min\\]")).click();
         driver.findElement(By.cssSelector("#price\\[min\\]")).clear();
         driver.findElement(By.cssSelector("#price\\[min\\]"))
@@ -103,16 +121,19 @@ public class RozetkaTests {
         driver.findElement(By.cssSelector("div#sort_price button")).click();
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(
+
                         By.xpath("//form[contains(@class, 'filter-parametrs pos-fix')" +
                                 "and contains(@id, 'filter_parameters_form')]")
                 ));
+
+
         Integer[] integersArr = driver.findElements(By.cssSelector(priceCSS)).stream()
                 .map(WebElement::getText)
                 .map(s -> s.replaceAll("[^\\d]", ""))
                 .map(Integer::parseInt).toArray(Integer[]::new);
         Arrays.sort(integersArr);
-        Assert.assertTrue(integersArr[0]>30000
-                & integersArr[integersArr.length-1]<40000);
+        Assert.assertTrue(integersArr[0] > 30000
+                & integersArr[integersArr.length - 1] < 40000);
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
@@ -121,7 +142,6 @@ public class RozetkaTests {
 
 
     }
-
 
 
     @AfterClass

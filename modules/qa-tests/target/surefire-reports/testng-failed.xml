@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [selenium]" guice-stage="DEVELOPMENT" verbose="0">
-  <test thread-count="5" name="ChromeTest(failed)" verbose="0">
-    <parameter name="browser" value="chrome"/>
+  <test thread-count="5" name="login(failed)" verbose="0">
     <classes>
-      <class name="com.telesens.automationpractice.AuthTests">
+      <class name="com.telesens.rozetka.RozetkaTests">
         <methods>
-          <include name="testAuthSuccess"/>
           <include name="setUp"/>
+          <include name="testSort2"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.telesens.automationpractice.AuthTests -->
+      </class> <!-- com.telesens.rozetka.RozetkaTests -->
     </classes>
-  </test> <!-- ChromeTest(failed) -->
-  <test thread-count="5" name="FirefoxTest(failed)" verbose="0">
-    <parameter name="browser" value="firefox"/>
-    <classes>
-      <class name="com.telesens.automationpractice.AuthTests">
-        <methods>
-          <include name="testAuthSuccess"/>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.telesens.automationpractice.AuthTests -->
-    </classes>
-  </test> <!-- FirefoxTest(failed) -->
+  </test> <!-- login(failed) -->
 </suite> <!-- Failed suite [selenium] -->
