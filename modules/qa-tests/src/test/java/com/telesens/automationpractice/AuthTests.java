@@ -1,8 +1,8 @@
 package com.telesens.automationpractice;
 
+
+import com.telesens.framework.test.BaseTest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -11,97 +11,117 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+
+import static com.telesens.automationpractice.page.HomePage.startFroHome;
 
 
-
-public class AuthTests {
-    private static final String DEFAULT_PATH = "src/main/resources/automationpractice.properties";
-    private static final String SELENIUM_PATH_ = "src/main/resources/selenium.properties";
-    private WebDriver driver;
+public class AuthTests extends BaseTest {
     private String baseUrl;
-    private String chromeDriverP;
-    private String firefoxDriverP;
     private String login;
     private String password;
     private Properties prop;
-    private Properties propSel;
     private List<String> txtDatas;
+//    private WebDriver driver;
+//    private String chromeDriverP;
+//    private String firefoxDriverP;
+//    private Properties propSel;
+    private static final String DEFAULT_PATH = "src/main/resources/automationpractice.properties";
+//    private static final String SELENIUM_PATH_ = "src/main/resources/selenium.properties";
 
 
-
-
-    @Parameters("browser")
+    //    @Parameters("browser")
     @BeforeClass(alwaysRun = true)
-    public void setUp(@Optional("firefox") String browser) throws Exception {
+    public void setUp() throws Exception {
         String automationPracticePath = System.getProperty("cfgAP");
-        String seleniumPaths = System.getProperty("browProp");
-        propSel = new Properties();
-        propSel.load(new FileReader(seleniumPaths));
-        chromeDriverP = propSel.getProperty("driver.chrome");
-        firefoxDriverP = propSel.getProperty("driver.firefox");
+        if (automationPracticePath==null)
+            automationPracticePath = DEFAULT_PATH;
         prop = new Properties();
         prop.load(new FileReader(automationPracticePath));
         baseUrl = prop.getProperty("base.url");
         login = prop.getProperty("login");
         password = prop.getProperty("password");
 
+//        String seleniumPaths = System.getProperty("browProp");
+//        propSel = new Properties();
+//        propSel.load(new FileReader(seleniumPaths));
+//        chromeDriverP = propSel.getProperty("driver.chrome");
+//        firefoxDriverP = propSel.getProperty("driver.firefox");
+//        if(browser.equals("chrome")){
+//            System.setProperty("webdriver.chrome.driver", chromeDriverP);
+//            driver = new ChromeDriver();
+//        }
+//        else if(browser.equals("firefox")){
+//            System.setProperty("webdriver.gecko.driver", firefoxDriverP);
+//            driver = new FirefoxDriver();
+//        }
 
-        if(browser.equals("chrome")){
-            System.setProperty("webdriver.chrome.driver", chromeDriverP);
-            driver = new ChromeDriver();
-        }
-        else if(browser.equals("firefox")){
-            System.setProperty("webdriver.gecko.driver", firefoxDriverP);
-            driver = new FirefoxDriver();
-        }
-        if (automationPracticePath==null)
-            automationPracticePath = DEFAULT_PATH;
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-//    @Test()
-////    @Ignore
-//    public void testAuthSuccess() throws Exception {
-//        driver.get(baseUrl);
-//        driver.findElement(By.linkText("Sign in")).click();
-//        driver.findElement(By.id("email")).click();
-//        driver.findElement(By.id("email")).clear();
-//        driver.findElement(By.id("email")).sendKeys(login);
-//        driver.findElement(By.id("passwd")).click();
-//        driver.findElement(By.id("passwd")).clear();
-//        driver.findElement(By.id("passwd")).sendKeys(password);
-//        driver.findElement(By.id("SubmitLogin")).click();
-////        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/following::span[1]")).click();
-////        driver.findElement(By.linkText("Sign out")).click();
-//        WebElement element = driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a/span"));
-//        String text = element.getText();
-//        Assert.assertEquals(text,"Konstantin Kondratiev");
-//    }
-
-    @Test(dataProvider = "testAuthSuccessProvider")
-//    @Ignore
-    public void testAuthSuccess(String loginn, String pasword) throws Exception {
+    @Test()
+    @Ignore
+    public void testAuthSuccess() throws Exception {
         driver.get(baseUrl);
         driver.findElement(By.linkText("Sign in")).click();
         driver.findElement(By.id("email")).click();
         driver.findElement(By.id("email")).clear();
-        driver.findElement(By.id("email")).sendKeys(loginn);
+        driver.findElement(By.id("email")).sendKeys(login);
         driver.findElement(By.id("passwd")).click();
         driver.findElement(By.id("passwd")).clear();
-        driver.findElement(By.id("passwd")).sendKeys(pasword);
+        driver.findElement(By.id("passwd")).sendKeys(password);
         driver.findElement(By.id("SubmitLogin")).click();
 //        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/following::span[1]")).click();
 //        driver.findElement(By.linkText("Sign out")).click();
         WebElement element = driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a/span"));
         String text = element.getText();
-        Assert.assertEquals(text,"Konstantin Kondratiev");
+        Assert.assertEquals(text, "Konstantin Kondratiev");
+    }
+
+    @Test(dataProvider = "testAuthSuccessProvider")
+//    @Ignore
+    public void testAuthSuccess(String loginn, String pasword) throws Exception {
+//        driver.get(baseUrl);
+//        1)длинный
+//        BasePage basePage = new BasePage(driver);
+//        HomePage homePage = basePage.goToHome(baseUrl);
+//        AuthPage authPage = homePage.clickSingIn();
+//        authPage.enterEmail(loginn);
+//        authPage.enterPasswor(pasword);
+//        authPage.pressSubmit();
+//        String text = authPage.getErrorMessege();
+//        Assert.assertEquals(text,"Authentication failed.");
+
+
+//        driver.findElement(By.linkText("Sign in")).click();
+//        driver.findElement(By.id("email")).click();
+//        driver.findElement(By.id("email")).clear();
+//        driver.findElement(By.id("email")).sendKeys(loginn);
+//        driver.findElement(By.id("passwd")).click();
+//        driver.findElement(By.id("passwd")).clear();
+//        driver.findElement(By.id("passwd")).sendKeys(pasword);
+
+//        driver.findElement(By.id("SubmitLogin")).click();
+//        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/following::span[1]")).click();
+//        driver.findElement(By.linkText("Sign out")).click();
+//        WebElement element = driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a/span"));
+//        String text = element.getText();
+//        Assert.assertEquals(text,"Konstantin Kondratiev");
+
+
+//        2)короткий
+        String errorMessege =
+                startFroHome(driver, baseUrl)
+                        .clickSingIn()
+                        .enterEmail(loginn)
+                        .enterPasswor(pasword)
+                        .pressSubmit().getErrorMessege();
+        Assert.assertEquals(errorMessege, "Authentication failed.");
     }
 
     @Test
     @Ignore
-    public void testAuthErrorMessage(){
+    public void testAuthErrorMessage() {
         driver.get(baseUrl);
         driver.findElement(By.linkText("Sign in")).click();
         driver.findElement(By.id("email")).click();
@@ -113,13 +133,12 @@ public class AuthTests {
         driver.findElement(By.id("SubmitLogin")).click();
         WebElement ele = driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/ol/li"));
         String text = ele.getText();
-        Assert.assertEquals(text,"Authentication failed.");
+        Assert.assertEquals(text, "Authentication failed.");
     }
 
     @Test
     @Ignore
-    public void testNumber8()
-    {
+    public void testNumber8() {
         readFromTxt();
         driver.get(baseUrl);
         driver.findElement(By.linkText("Sign in")).click();
@@ -142,42 +161,39 @@ public class AuthTests {
         driver.findElement(By.id("submitAddress")).click();
 
 
-
-
     }
 
-    @AfterClass(alwaysRun = true)
-    public void tearDown() throws Exception {
-        driver.quit();
-    }
+//    @AfterClass(alwaysRun = true)
+//    public void tearDown() throws Exception {
+//        driver.quit();
+//    }
 
-    public void readFromTxt()
-    {
+    public void readFromTxt() {
         String txtProperty = prop.getProperty("txt.file");
         txtDatas = new ArrayList<>();
         try {
 //            Scanner scanner = new Scanner(new FileReader(txtProperty));
             Scanner scanner = new Scanner(new FileReader("..\\data.txt"));    //относительно
 //            FileReader fr = new FileReader("data.txt");     //не находит по относительному пути!
-            while (scanner.hasNext()){
+            while (scanner.hasNext()) {
                 String s = scanner.nextLine();
                 txtDatas.add(s);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void enterToEditFields(String idName, String value){
+    public void enterToEditFields(String idName, String value) {
         driver.findElement(By.id(idName)).click();
         driver.findElement(By.id(idName)).clear();
         driver.findElement(By.id(idName)).sendKeys(value);
     }
 
-    @DataProvider(name="testAuthSuccessProvider")
-    public Object[][] testAuthSuccessProvider(){
+    @DataProvider(name = "testAuthSuccessProvider")
+    public Object[][] testAuthSuccessProvider() {
         return new Object[][]{
-                {"kkon870@gmail.com","125test"}
+                {"kkon870@gmail.com", "125tes"}
         };
 
     }

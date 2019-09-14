@@ -5,9 +5,9 @@
     <classes>
       <class name="com.telesens.rozetka.RozetkaTests">
         <methods>
-          <include name="setUp"/>
           <include name="testSort2"/>
           <include name="tearDown"/>
+          <include name="setUp"/>
         </methods>
       </class> <!-- com.telesens.rozetka.RozetkaTests -->
     </classes>

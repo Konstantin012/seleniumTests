@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.telesens.academy</groupId>
     <artifactId>qa-ja-07-root</artifactId>
     <packaging>pom</packaging>
@@ -12,13 +11,17 @@
     <properties>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
-
+        <!--Кодировка-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.output>UTF-8</project.build.output>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <modules>
         <module>modules/qa-tests</module>
         <module>modules/qa-framework</module>
     </modules>
+
 
 
 </project>

@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-selenium" class="navigator-link">
-              <span class="suite-name border-failed">selenium</span>
+              <span class="suite-name border-passed">selenium</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-selenium" class="navigator-link ">
-                    <span>D:\Java\MAVEN_S\suites\testng.xml</span>
+                    <span>D:\Java\MAVEN_S\suites\testng_Roz.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-selenium" class="hide-methods failed suite-selenium"> (hide)</a> <!-- hide-methods failed suite-selenium -->
-                      <a href="#" panel-name="suite-selenium" class="show-methods failed suite-selenium"> (show)</a> <!-- show-methods failed suite-selenium -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-selenium" class="hide-methods passed suite-selenium"> (hide)</a> <!-- hide-methods passed suite-selenium -->
+                      <a href="#" panel-name="suite-selenium" class="show-methods passed suite-selenium"> (show)</a> <!-- show-methods passed suite-selenium -->
                     </span>
-                    <div class="method-list-content failed suite-selenium">
+                    <div class="method-list-content passed suite-selenium">
                       <span>
-                        <img src="failed.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-selenium" title="com.telesens.rozetka.RozetkaTests" class="method navigator-link" hash-for-method="testSort2">testSort2</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-selenium -->
+                    </div> <!-- method-list-content passed suite-selenium -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,9 +117,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-selenium" class="panel selenium">
-          <div class="suite-selenium-class-failed">
+          <div class="suite-selenium-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
+              <img src="passed.png"/>
               <span class="class-name">com.telesens.rozetka.RozetkaTests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -128,37 +128,14 @@
                   <a name="testSort2">
                   </a> <!-- testSort2 -->
                   <span class="method-name">testSort2</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#trackbarprice &gt; table &gt; tbody &gt; tr &gt; td.lb &gt; div &gt; img&quot;}
-  (Session info: chrome=76.0.3809.132)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;4.0.0-alpha-2&apos;, revision: &apos;f148142cf8&apos;, time: &apos;2019-07-01T20:55:26&apos;
-System info: host: &apos;KOS-PC&apos;, ip: &apos;192.168.153.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;12.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 76.0.3809.132, chrome: {chromedriverVersion: 76.0.3809.126 (d80a294506b4..., userDataDir: C:\Users\KoS\AppData\Local\...}, goog:chromeOptions: {debuggerAddress: localhost:30262}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: 708fb8d19dad01a6ea82301f9862a54f
-*** Element info: {Using=css selector, value=#trackbarprice &gt; table &gt; tbody &gt; tr &gt; td.lb &gt; div &gt; img}
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:191)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:125)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:576)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:327)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:435)
-	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:319)
-	at com.telesens.rozetka.RozetkaTests.testSort2(RozetkaTests.java:93)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
-... Removed 36 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-selenium-class-failed -->
+          </div> <!-- suite-selenium-class-passed -->
         </div> <!-- panel selenium -->
         <div panel-name="test-xml-selenium" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">D:\Java\MAVEN_S\suites\testng.xml</span>
+            <span class="header-content">D:\Java\MAVEN_S\suites\testng_Roz.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -211,12 +188,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testSort2')
 data.setCell(0, 2, 'com.telesens.rozetka.RozetkaTests')
-data.setCell(0, 3, 30205);
+data.setCell(0, 3, 32135);
 window.suiteTableData['selenium']= { tableData: data, tableDiv: 'times-div-selenium'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 30 seconds</span>
+              <span class="suite-total-time">Total running time: 32 seconds</span>
               <div id="times-div-selenium">
               </div> <!-- times-div-selenium -->
             </div> <!-- times-div -->
@@ -255,14 +232,12 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">testSort2</span>
-                <span class="method-start">4968 ms</span>
+                <span class="method-start">5512 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">35184 ms</span>
+                <span class="method-start">37660 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

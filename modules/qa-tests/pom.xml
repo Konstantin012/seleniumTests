@@ -3,16 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>qa-ja-07-root</artifactId>
         <groupId>com.telesens.academy</groupId>
+        <artifactId>qa-ja-07-root</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>qa-tests</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.telesens.academy</groupId>
+            <artifactId>qa-framework</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -26,6 +31,68 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>run-suite</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.21.0</version>
+                        <configuration>
+                            <systemProperties>
+                                <property>
+                                    <name>cfgAP</name>
+                                    <value>src/main/resources/automationpractice.properties</value>
+                                </property>
+                                <property>
+                                    <name>browProp</name>
+                                    <value>src/main/resources/selenium.properties</value>
+                                </property>
+                            </systemProperties>
+                            <suiteXmlFiles>
+                                <!--для запуска по ключу через Идею-->
+                                <!--<suiteXmlFile>${suite}</suiteXmlFile>-->
+                                <!--Для запуска через Maven-->
+                                <suiteXmlFile>../../suites/testng_Roz.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>nexus</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.21.0</version>
+                        <configuration>
+                            <systemProperties>
+                                <property>
+                                    <name>cfgAP</name>
+                                    <value>src/main/resources/automationpractice.properties</value>
+                                </property>
+                                <property>
+                                    <name>browProp</name>
+                                    <value>src/main/resources/selenium.properties</value>
+                                </property>
+                            </systemProperties>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>../../suites/testng.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -34,6 +101,7 @@
                 <version>2.21.0</version>
                 <configuration>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <!--                    относительные пути к пропертям -->
                     <systemProperties>
                         <property>
                             <name>cfgAP</name>
@@ -46,8 +114,7 @@
                     </systemProperties>
 
                     <suiteXmlFiles>
-                        <suiteXmlFile>../../suites/testng.xml</suiteXmlFile>
-                        <!--                        <suiteXmlFile>${suite}</suiteXmlFile>-->
+                        <suiteXmlFile>../../suites/testng2.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

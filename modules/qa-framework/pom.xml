@@ -9,12 +9,23 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>qa-framework</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>../../../TestMavenSelenium</module>
-    </modules>
+    <packaging>jar</packaging>
 
+
+    <dependencies>
+        <!--selenium-->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.0.0-alpha-2</version>
+        </dependency>
+        <!--testng-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
