@@ -43,8 +43,8 @@
                         <configuration>
                             <systemProperties>
                                 <property>
-                                    <name>cfgAP</name>
-                                    <value>src/main/resources/automationpractice.properties</value>
+                                    <name>rozetkaProp</name>
+                                    <value>src/main/resources/rozetka.properties</value>
                                 </property>
                                 <property>
                                     <name>browProp</name>
@@ -52,9 +52,9 @@
                                 </property>
                             </systemProperties>
                             <suiteXmlFiles>
-                                <!--для запуска по ключу через Идею-->
-                                <!--<suiteXmlFile>${suite}</suiteXmlFile>-->
-                                <!--Для запуска через Maven-->
+<!--                                &lt;!&ndash;для запуска по ключу через Идею&ndash;&gt;-->
+<!--                                <suiteXmlFile>${suite}</suiteXmlFile>-->
+                                Для запуска через Maven
                                 <suiteXmlFile>../../suites/testng_Roz.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
@@ -106,6 +106,10 @@
                         <property>
                             <name>cfgAP</name>
                             <value>src/main/resources/automationpractice.properties</value>
+                        </property>
+                        <property>
+                            <name>browProp</name>
+                            <value>src/main/resources/selenium.properties</value>
                         </property>
                         <property>
                             <name>browProp</name>

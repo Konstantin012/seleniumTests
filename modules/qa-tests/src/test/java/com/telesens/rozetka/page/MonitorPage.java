@@ -8,13 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class MonitorPage extends BasePage {
 
@@ -66,7 +62,7 @@ public class MonitorPage extends BasePage {
     public MonitorPage sortFromCheapToExpens(){
         sortWindow.click();
         fromCheap.click();
-        waiting(By.xpath(WaitingSortedAfterSelectFromList), 10);
+        waitingUntilPresence(By.xpath(WaitingSortedAfterSelectFromList), 10);
         return this;
     }
 
@@ -90,7 +86,7 @@ public class MonitorPage extends BasePage {
 
     public MonitorPage pressOkAfrerEnterPrices(){
         okAfterEnterPrice.click();
-        waiting(By.xpath(WaitingSortedAfterEnterPrice),10);
+        waitingUntilPresence(By.xpath(WaitingSortedAfterEnterPrice),10);
         return this;
     }
 

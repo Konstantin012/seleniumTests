@@ -1,7 +1,10 @@
 com\telesens\rozetka\page\MonitorPage.class
 com\telesens\automationpractice\AuthTests.class
 com\telesens\automationpractice\page\HomePage.class
+com\telesens\rozetka\page\TShirtPage.class
+com\telesens\rozetka\page\EnterToAccounPage.class
 com\telesens\rozetka\RozetkaTests.class
 com\telesens\automationpractice\page\AuthPage.class
 com\telesens\rozetka\page\HomePage.class
+com\telesens\rozetka\page\AccountDropListPage.class
 com\telesens\automationpractice\page\MyAccountPage.class

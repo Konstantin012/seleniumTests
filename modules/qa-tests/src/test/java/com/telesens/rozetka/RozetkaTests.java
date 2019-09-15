@@ -1,23 +1,33 @@
 package com.telesens.rozetka;
 
+import com.telesens.framework.page.BasePage;
 import com.telesens.framework.test.BaseTest;
+import com.telesens.rozetka.page.EnterToAccounPage;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.io.FileReader;
 import java.util.*;
 
 import static com.telesens.rozetka.page.HomePage.startFromHome;
 
 public class RozetkaTests extends BaseTest {
+    private String loginRoz;
+    private String passworRoz;
+    private static final String DEFAULT_PATH = "src/main/resources/rozetka.properties";
+    private String baseUrl;
+    private Properties propertRoz;
 
-    private String baseUrl = "https://rozetka.com.ua/";
-    private Properties prop;
 
-
-//    @BeforeClass(alwaysRun = true)
-//    public void setUp() throws Exception {
-//
-//    }
+    @BeforeClass(alwaysRun = true)
+    public void setUp() throws Exception {
+        String automationPracticePath = System.getProperty("rozetkaProp");
+        if (automationPracticePath==null)
+            automationPracticePath = DEFAULT_PATH;
+        propertRoz = new Properties();
+        propertRoz.load(new FileReader(automationPracticePath));
+        baseUrl = propertRoz.getProperty("Roz.url");
+    }
 
 
     @Test(enabled = false)
@@ -40,7 +50,7 @@ public class RozetkaTests extends BaseTest {
         List<Integer> allSortedPrices = startFromHome(driver, baseUrl)
                 .selectMonitors()
                 .enterPrice()
-//                .enterMinPrice("30000")
+//                .enterMinPrice("30000") //НЕ РАБОТАЕТ
 //                .enterMaxPrice("40000")
                 .pressOkAfrerEnterPrices()
                 .getAllPricesToIneger();
@@ -48,13 +58,72 @@ public class RozetkaTests extends BaseTest {
         Collections.sort(allSortedPrices);
 
         Assert.assertTrue(allSortedPrices.get(0) > 30000
-                & allSortedPrices.get(allSortedPrices.size()-1) < 40000);
+                & allSortedPrices.get(allSortedPrices.size() - 1) < 40000);
+    }
+
+    @Test(enabled = false,dataProvider = "rozetkaTestAuthSuccessProvider")
+    public void authenticationSuccess(String login,String passwor, String ownAccountName, String acountSign)  {
+        startFromHome(driver, baseUrl)
+                .clickOnAccount()
+                .enterYourData(login,passwor )
+                .checkLoginPasswordFilled()
+                .goToAccount()
+                .checAcountName(ownAccountName)
+                .openAccountDropList()
+                .exitFromAccount()
+                .checAcountName(acountSign);
+    }
+
+    @Test(enabled = false,dataProvider = "rozetkaTestAuthIncorPasw")
+    public void wrongAuthentication(String login,String passwor,String errorMes)  {
+        BasePage basePage = startFromHome(driver, baseUrl)
+                .clickOnAccount()
+                .enterYourData(login, passwor)
+                .checkLoginPasswordFilled()
+                .goToAccountError()
+                .checkErrorPassMessage(errorMes);
+
+//        EnterToAccounPage basePage1 =
+//                (EnterToAccounPage) basePage;   //НЕ РАБОТАЕТ ПРИВЕДЕНИЕ
+
     }
 
     @Test(enabled = false)
-    public void authenticationSuccess(){
-        startFromHome(driver, baseUrl);
+    public void filterOrsay()  {
+        startFromHome(driver, baseUrl)
+        .selectTShirts()
+        .getAllLables()
+        ;
     }
+
+
+
+
+
+    //DATA PROVIDERS
+    @DataProvider(name = "rozetkaTestAuthSuccessProvider")
+    public Object[][] rozetkaTestAuthSuccessProvider() {
+        loginRoz = propertRoz.getProperty("login");
+        passworRoz = propertRoz.getProperty("password");
+        String ownAccountName = propertRoz.getProperty("ownAccountName");
+        String acountSign = propertRoz.getProperty("acountSign");
+        return new Object[][]{
+                {loginRoz, passworRoz, ownAccountName, acountSign}
+        };
+    }
+    @DataProvider(name = "rozetkaTestAuthIncorPasw")
+    public Object[][] rozetkaTestAuthIncorPasw() {
+        loginRoz = propertRoz.getProperty("login");
+        String incorPassworRoz = propertRoz.getProperty("incorectPassword");
+        String erroeM = propertRoz.getProperty("erroeMes");
+        return new Object[][]{
+                {loginRoz, incorPassworRoz, erroeM}
+        };
+    }
+
+
+
+
 
 
 //Метод написан напрямую через селениум, без Pageobject
